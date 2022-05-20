@@ -13,6 +13,8 @@ app.use(express.static('server/public'));
 
 
 
+
+
 //Setting up the listener for PORT 5000
 app.listen(PORT, () => {
     console.log(`Server is running on`, PORT)
