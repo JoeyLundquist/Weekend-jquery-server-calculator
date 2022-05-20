@@ -20,7 +20,7 @@ app.get('/calculator-objects', (req, res) => {
 })
 
 app.post('/calculator-objects',(req, res) => {
-    calculatorObjects.push(req.body.firstInputNumber)
+    calculatorObjects.push(req.body)
     console.log(calculatorObjects)
     res.sendStatus(201)
 })
