@@ -52,7 +52,14 @@ function doingCalculations(calcs) {
     }
 }
 
+app.post('/calculate-history-item', (req, res) => {
+    console.log('In calculate history', req.body.counter);
+    res.send(calculatorObjects[req.body.counter])
+})
 
+app.get('/calculate-history-item', (req, res) => {
+    res.send()
+})
 
 
 app.get('/calculator-objects', (req, res) => {
@@ -63,9 +70,16 @@ app.get('/calculator-objects', (req, res) => {
 app.post('/calculator-objects',(req, res) => {
     let mathObject = req.body
     doingCalculations(mathObject);
-    calculatorObjects.push(mathObject)
+    calculatorObjects.unshift(mathObject)
     console.log(calculatorObjects)
     res.sendStatus(201)
+})
+
+//Delete request
+app.delete('/clear-history', (req, res) => {
+    calculatorObjects.splice(0, calculatorObjects.length)
+    console.log(calculatorObjects)
+    res.send(calculatorObjects)
 })
 
 

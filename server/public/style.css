@@ -29,3 +29,8 @@ button, #equal-button {
     display: inline-block;
     position: relative;
 }
+
+#clear-history {
+    width: 75px;
+    height: 50px;
+}

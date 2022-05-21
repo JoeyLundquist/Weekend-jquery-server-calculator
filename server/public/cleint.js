@@ -5,9 +5,13 @@ function readyNow() {
     $('.math-operators').on('click', mathOperatorSelect)
     $('#clear-button').on('click', emptyInputs)
     $('.number-buttons').on('click', enterInputs)
+    $('#clear-history').on('click', clearHistory)
+    $('#calculator-history').on('click', '.calc-history-li', calculateHistoryItem)
     console.log(mathOp)
     gatherInputs();
 }
+
+
 
 let mathOp = '';
 
@@ -77,9 +81,47 @@ function renderToDOM(calc) {
     $('#render-answer').append(calc[calc.length - 1].mathAnswer)
     let el = $('#calculator-history')
     el.empty();
+    let dataCounter = 0;
     for(let input of calc){
-    el.prepend(`
-        <li>${input.firstInputNumber} ${input.mathOperator} ${input.secondInputNumber} = ${input.mathAnswer}</li>
-    `)
+        el.prepend(`
+                <li data-counter="${dataCounter}" class="calc-history-li">
+                    ${input.firstInputNumber} ${input.mathOperator} ${input.secondInputNumber}
+                </li>
+        `)
+        dataCounter ++;
     }
+}
+
+function clearHistory() {
+
+
+    $.ajax({
+        url: '/clear-history',
+        method: 'DELETE'
+    }).then((response) => {
+        console.log(response)
+        gatherInputs(response)
+        $('#calculator-history').empty();
+    }).catch(() => {
+        console.log('DELETE didn\'t work')
+    })
+
+}
+
+function calculateHistoryItem() {
+    let index = $(this).data()
+    console.log(`Clickin`, index)
+
+
+    $.ajax({
+        url:'/calculate-history-item',
+        method: 'POST',
+        data: index
+    }).then((response) => {
+        console.log(`In calc history`, response )
+        $('#render-answer').empty()
+        $('#render-answer').append(`${response.mathAnswer}`)
+    }).catch(() => {
+        console.log(`You don messed up`)
+    })
 }
