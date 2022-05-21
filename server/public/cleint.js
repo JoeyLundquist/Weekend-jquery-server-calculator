@@ -1,7 +1,7 @@
 $(readyNow)
 
 function readyNow() {
-    $('#calculator-form-input').on('submit', onSubmit)
+    $('#equal-button').on('click', onSubmit)
     $('.math-operators').on('click', mathOperatorSelect)
     $('#clear-button').on('click', emptyInputs)
     $('.number-buttons').on('click', enterInputs)
@@ -19,10 +19,10 @@ function mathOperatorSelect() {
 
 function enterInputs() {
     if(mathOp === ''){
-        $('#second-input-number').append($(this).text())
+        $('#first-input-number').append($(this).text())
     }
     else if(mathOp === '+' || '-' || '*' || '/'){
-        $('#first-input-number').prepend($(this).text())
+        $('#second-input-number').append($(this).text())
     }
 }
 
@@ -30,13 +30,17 @@ function onSubmit(evt) {
     evt.preventDefault();
 
     let data = {
-        firstInputNumber: $('#first-input-number').val(),
-        secondInputNumber: $('#second-input-number').val(),
+        firstInputNumber: $('#first-input-number').text(),
+        secondInputNumber: $('#second-input-number').text(),
         mathOperator: mathOp,
         mathAnswer: 0
     }
 
-    emptyInputs();
+    if($('#first-input-number').text() === '' || $('#second-input-number').text() === '' ) {
+        alert(`Missing Inputs, can't calculate a single or no Number!`)
+        return false;
+    }
+    
 
     $.ajax({
         url: '/calculator-objects',
