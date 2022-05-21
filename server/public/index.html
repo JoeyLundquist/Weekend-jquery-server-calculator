@@ -12,8 +12,8 @@
 <body>
     <h1>Server Side Calculator</h1>
     <form id="calculator-form-input">
-        <input id="first-input-number" type="number">
-        <input id="second-input-number" type="number">
+        <input class="user-input" id="first-input-number" type="number" required>
+        <input class="user-input" id="second-input-number" type="number" required>
         <input type="submit" value="=">
     </form>
 
@@ -21,6 +21,8 @@
     <button class="math-operators">-</button>
     <button class="math-operators">*</button>
     <button class="math-operators">/</button>
+
+    <h2 id="render-answer"></h2>
 
     <ul id="calculator-history">
 

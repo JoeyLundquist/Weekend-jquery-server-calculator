@@ -21,6 +21,9 @@ app.use(express.static('server/public'));
 let calculatorObjects = require('./modules/calcObject');
 console.log(calculatorObjects);
 
+//Importing answers array
+const answers = require('./modules/answers');
+
 //Importing divide function
 const divide = require('./modules/divide')
 
@@ -33,11 +36,22 @@ const subtract = require('./modules/subtract');
 //Importing addition function
 const sum = require('./modules/sum');
 
-function doingCalculations () {
-    for(let calcs of calculatorObjects){
-        if(calcs.mathOperator === '/'){
-             divide.divideNum(calcs.firstInputNumber, calcs.secondInputNumber);
-        }
+//My function to calculate the answers
+function doingCalculations(calcs) {
+     if(calcs.mathOperator === '/'){
+       calcs.mathAnswer = divide.divideNum(calcs.firstInputNumber, calcs.secondInputNumber);
+    }
+    else if(calcs.mathOperator === '*'){
+        calcs.mathAnswer = multiplication.multiplication(calcs.firstInputNumber, calcs.secondInputNumber)
+    }
+    else if(calcs.mathOperator === '+'){
+        calcs.mathAnswer = sum.sumOf(Number(calcs.firstInputNumber), Number(calcs.secondInputNumber))
+    }
+    else if(calcs.mathOperator === '-'){
+        calcs.mathAnswer = subtract.subtract(Number(calcs.firstInputNumber), Number(calcs.secondInputNumber))
+    }
+    else{
+        return false;
     }
 }
 
@@ -50,7 +64,9 @@ app.get('/calculator-objects', (req, res) => {
 })
 
 app.post('/calculator-objects',(req, res) => {
-    calculatorObjects.push(req.body)
+    let mathObject = req.body
+    doingCalculations(mathObject);
+    calculatorObjects.push(mathObject)
     console.log(calculatorObjects)
     res.sendStatus(201)
 })

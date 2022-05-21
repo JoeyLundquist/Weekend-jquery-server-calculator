@@ -20,8 +20,11 @@ function onSubmit(evt) {
     let data = {
         firstInputNumber: $('#first-input-number').val(),
         secondInputNumber: $('#second-input-number').val(),
-        mathOperator: mathOp
+        mathOperator: mathOp,
+        mathAnswer: 0
     }
+
+    emptyInputs();
 
     $.ajax({
         url: '/calculator-objects',
@@ -46,12 +49,18 @@ function gatherInputs() {
     })
 }
 
+function emptyInputs() {
+    $('.user-input').val('');
+}
+
 function renderToDOM(calc) {
+    $('#render-answer').empty()
+    $('#render-answer').append(calc[calc.length - 1].mathAnswer)
     let el = $('#calculator-history')
     el.empty();
     for(let input of calc){
     el.append(`
-        <li>${input.firstInputNumber} ${input.secondInputNumber}</li>
+        <li>${input.firstInputNumber} ${input.mathOperator} ${input.secondInputNumber} = ${input.mathAnswer}</li>
     `)
     }
 }
