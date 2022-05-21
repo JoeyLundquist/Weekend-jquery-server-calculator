@@ -11,17 +11,36 @@
 </head>
 <body>
     <h1>Server Side Calculator</h1>
-    <form id="calculator-form-input">
-        <input class="user-input" id="first-input-number" type="number" required>
-        <input class="user-input" id="second-input-number" type="number" required>
-        <input type="submit" value="=">
-    </form>
 
-    <button class="math-operators">+</button>
-    <button class="math-operators">-</button>
-    <button class="math-operators">*</button>
-    <button class="math-operators">/</button>
-    <button id="clear-button">C</button>
+    <div class="calc-outline">
+        <div class="top-row-calc">
+            <h2 id="#first-input-number" class="calc-screen">
+                <span class="user-input"></span>
+                <span id="math-operator"></span>
+                <span class="user-input" id="second-input-number"></span>
+            </h2>
+            <button id="clear-button">C</button><br>
+        </div>
+        <button class="number-buttons">7</button>
+        <button class="number-buttons">8</button>
+        <button class="number-buttons">9</button>
+        <button class="math-operators">+</button><br>
+
+        <button class="number-buttons">4</button>
+        <button class="number-buttons">5</button>
+        <button class="number-buttons">6</button>
+        <button class="math-operators">-</button><br>
+
+        <button class="number-buttons">1</button>
+        <button class="number-buttons">2</button>
+        <button class="number-buttons">3</button>
+        <button class="math-operators">*</button><br>
+        <button class="number-buttons">0</button>
+        <button class="number-buttons">.</button>
+        <input id="equal-button" type="submit" value="=">
+        <button class="math-operators">/</button>
+    </div>
+
 
     <h2 id="render-answer"></h2>
 

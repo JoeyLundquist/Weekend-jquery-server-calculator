@@ -21,9 +21,6 @@ app.use(express.static('server/public'));
 let calculatorObjects = require('./modules/calcObject');
 console.log(calculatorObjects);
 
-//Importing answers array
-const answers = require('./modules/answers');
-
 //Importing divide function
 const divide = require('./modules/divide')
 

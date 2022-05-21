@@ -4,6 +4,8 @@ function readyNow() {
     $('#calculator-form-input').on('submit', onSubmit)
     $('.math-operators').on('click', mathOperatorSelect)
     $('#clear-button').on('click', emptyInputs)
+    $('.number-buttons').on('click', enterInputs)
+    console.log(mathOp)
     gatherInputs();
 }
 
@@ -11,9 +13,18 @@ let mathOp = '';
 
 function mathOperatorSelect() {
     mathOp = $(this).text();
+    $('#math-operator').append(mathOp)
     console.log(mathOp);
 }
 
+function enterInputs() {
+    if(mathOp === ''){
+        $('#second-input-number').append($(this).text())
+    }
+    else if(mathOp === '+' || '-' || '*' || '/'){
+        $('#first-input-number').prepend($(this).text())
+    }
+}
 
 function onSubmit(evt) {
     evt.preventDefault();
@@ -51,7 +62,10 @@ function gatherInputs() {
 }
 
 function emptyInputs() {
-    $('.user-input').val('');
+    $('.user-input').empty();
+    $('#math-operator').empty();
+    mathOp = '';
+    console.log(`mathOp= ${mathOp}`);
 }
 
 function renderToDOM(calc) {

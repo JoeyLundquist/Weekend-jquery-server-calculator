@@ -1,3 +1,31 @@
 body {
     background-color: teal;
 }
+
+button, #equal-button {
+    width: 25px;
+    height: 25px;
+    margin: 1px;
+}
+
+.calc-outline {
+    border:1px solid rgb(179, 235, 179);
+    width:150px;
+    margin:150px auto;
+}
+
+.calc-screen {
+    height: 25px;
+    width: 140px;
+    background-color: white;
+    margin: 5px;
+}
+
+.top-row-calc {
+    display: inline;
+}
+
+#clear-button {
+    display: inline-block;
+    position: relative;
+}
