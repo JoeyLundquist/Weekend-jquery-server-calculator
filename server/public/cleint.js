@@ -60,7 +60,7 @@ function renderToDOM(calc) {
     let el = $('#calculator-history')
     el.empty();
     for(let input of calc){
-    el.append(`
+    el.prepend(`
         <li>${input.firstInputNumber} ${input.mathOperator} ${input.secondInputNumber} = ${input.mathAnswer}</li>
     `)
     }
