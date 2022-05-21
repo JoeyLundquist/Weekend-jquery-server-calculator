@@ -3,6 +3,7 @@ $(readyNow)
 function readyNow() {
     $('#calculator-form-input').on('submit', onSubmit)
     $('.math-operators').on('click', mathOperatorSelect)
+    $('#clear-button').on('click', emptyInputs)
     gatherInputs();
 }
 
