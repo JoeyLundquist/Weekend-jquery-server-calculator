@@ -10,23 +10,46 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Server Side Calculator</h1>
-    <form id="calculator-form-input">
-        <input class="user-input" id="first-input-number" type="number" required>
-        <input class="user-input" id="second-input-number" type="number" required>
-        <input type="submit" value="=">
-    </form>
+    <h1 class="title">Server Side Calculator</h1>
+    <div class="flex-container">
+        <div class="calc-outline">
+            <div class="top-row-calc">
+                <h2 class="calc-screen">
+                    <span id="first-input-number" class="user-input"></span>
+                    <span id="math-operator"></span>
+                    <span class="user-input" id="second-input-number"></span>
+                </h2><button id="clear-button">C</button>
+            <br>
+            </div>
+            <button class="number-buttons calc-body">7</button>
+            <button class="number-buttons calc-body">8</button>
+            <button class="number-buttons calc-body">9</button>
+            <button class="math-operators calc-body">+</button><br>
 
-    <button class="math-operators">+</button>
-    <button class="math-operators">-</button>
-    <button class="math-operators">*</button>
-    <button class="math-operators">/</button>
-    <button id="clear-button">C</button>
+            <button class="number-buttons calc-body">4</button>
+            <button class="number-buttons calc-body">5</button>
+            <button class="number-buttons calc-body">6</button>
+            <button class="math-operators calc-body">-</button><br>
 
-    <h2 id="render-answer"></h2>
+            <button class="number-buttons calc-body">1</button>
+            <button class="number-buttons calc-body">2</button>
+            <button class="number-buttons calc-body">3</button>
+            <button class="math-operators calc-body">*</button><br>
+            <button class="number-buttons calc-body">0</button>
+            <button class="number-buttons calc-body">.</button>
+            <input id="equal-button" type="submit" value="=">
+            <button class="math-operators calc-body">/</button> 
+        </div>
 
-    <ul id="calculator-history">
+        <button id="clear-history">Clear History</button>
 
-    </ul>
+        <h2 class="render-answer-word">Answer: <span id="render-answer"></span></h2>
+
+        
+
+        <ul id="calculator-history">
+
+        </ul>
+    </div>
 </body>
 </html>

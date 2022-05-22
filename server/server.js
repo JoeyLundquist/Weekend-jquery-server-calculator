@@ -21,9 +21,6 @@ app.use(express.static('server/public'));
 let calculatorObjects = require('./modules/calcObject');
 console.log(calculatorObjects);
 
-//Importing answers array
-const answers = require('./modules/answers');
-
 //Importing divide function
 const divide = require('./modules/divide')
 
@@ -37,6 +34,7 @@ const subtract = require('./modules/subtract');
 const sum = require('./modules/sum');
 
 //My function to calculate the answers
+//By checking the math operators and plugging the inputs into the correct function
 function doingCalculations(calcs) {
      if(calcs.mathOperator === '/'){
        calcs.mathAnswer = divide.divideNum(calcs.firstInputNumber, calcs.secondInputNumber);
@@ -54,21 +52,32 @@ function doingCalculations(calcs) {
         return false;
     }
 }
+//Server endpoint for adding calculation objects to array
+app.post('/calculate-history-item', (req, res) => {
+    console.log('In calculate history', req.body.counter);
+    res.send(calculatorObjects[req.body.counter])
+})
 
 
-
-
+//server endpoint to send back our array of objects to the client to then be rendered.
 app.get('/calculator-objects', (req, res) => {
     console.log(`Inside calc GET`)
     res.send(calculatorObjects)
 })
-
+//Server endpoint to take in the object from the client and add it to our list
 app.post('/calculator-objects',(req, res) => {
     let mathObject = req.body
     doingCalculations(mathObject);
-    calculatorObjects.push(mathObject)
+    calculatorObjects.unshift(mathObject)
     console.log(calculatorObjects)
     res.sendStatus(201)
+})
+
+//Delete request to splice our array so the user can start fresh with a clean history
+app.delete('/clear-history', (req, res) => {
+    calculatorObjects.splice(0, calculatorObjects.length)
+    console.log(calculatorObjects)
+    res.send(calculatorObjects)
 })
 
 
