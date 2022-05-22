@@ -17,6 +17,7 @@ let mathOp = '';
 
 function mathOperatorSelect() {
     mathOp = $(this).text();
+    $('#math-operator').empty();
     $('#math-operator').append(mathOp)
     console.log(mathOp);
 }
@@ -77,8 +78,9 @@ function emptyInputs() {
 }
 
 function renderToDOM(calc) {
+    let answer = calc[0].mathAnswer;
     $('#render-answer').empty()
-    $('#render-answer').append(calc[calc.length - 1].mathAnswer)
+    $('#render-answer').append(answer)
     let el = $('#calculator-history')
     el.empty();
     let dataCounter = 0;
@@ -102,6 +104,7 @@ function clearHistory() {
         console.log(response)
         gatherInputs(response)
         $('#calculator-history').empty();
+        $('#render-answer').empty();
     }).catch(() => {
         console.log('DELETE didn\'t work')
     })
@@ -118,7 +121,7 @@ function calculateHistoryItem() {
         method: 'POST',
         data: index
     }).then((response) => {
-        console.log(`In calc history`, response )
+        console.log(`In calc history`, response.mathAnswer )
         $('#render-answer').empty()
         $('#render-answer').append(`${response.mathAnswer}`)
     }).catch(() => {

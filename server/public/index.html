@@ -10,44 +10,46 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Server Side Calculator</h1>
+    <h1 class="title">Server Side Calculator</h1>
+    <div class="flex-container">
+        <div class="calc-outline">
+            <div class="top-row-calc">
+                <h2 class="calc-screen">
+                    <span id="first-input-number" class="user-input"></span>
+                    <span id="math-operator"></span>
+                    <span class="user-input" id="second-input-number"></span>
+                </h2><button id="clear-button">C</button>
+            <br>
+            </div>
+            <button class="number-buttons calc-body">7</button>
+            <button class="number-buttons calc-body">8</button>
+            <button class="number-buttons calc-body">9</button>
+            <button class="math-operators calc-body">+</button><br>
 
-    <div class="calc-outline">
-        <div class="top-row-calc">
-            <h2 class="calc-screen">
-                <span id="first-input-number" class="user-input"></span>
-                <span id="math-operator"></span>
-                <span class="user-input" id="second-input-number"></span>
-            </h2>
-            <button id="clear-button">C</button><br>
+            <button class="number-buttons calc-body">4</button>
+            <button class="number-buttons calc-body">5</button>
+            <button class="number-buttons calc-body">6</button>
+            <button class="math-operators calc-body">-</button><br>
+
+            <button class="number-buttons calc-body">1</button>
+            <button class="number-buttons calc-body">2</button>
+            <button class="number-buttons calc-body">3</button>
+            <button class="math-operators calc-body">*</button><br>
+            <button class="number-buttons calc-body">0</button>
+            <button class="number-buttons calc-body">.</button>
+            <input id="equal-button" type="submit" value="=">
+            <button class="math-operators calc-body">/</button> 
         </div>
-        <button class="number-buttons">7</button>
-        <button class="number-buttons">8</button>
-        <button class="number-buttons">9</button>
-        <button class="math-operators">+</button><br>
 
-        <button class="number-buttons">4</button>
-        <button class="number-buttons">5</button>
-        <button class="number-buttons">6</button>
-        <button class="math-operators">-</button><br>
+        <button id="clear-history">Clear History</button>
 
-        <button class="number-buttons">1</button>
-        <button class="number-buttons">2</button>
-        <button class="number-buttons">3</button>
-        <button class="math-operators">*</button><br>
-        <button class="number-buttons">0</button>
-        <button class="number-buttons">.</button>
-        <input id="equal-button" type="submit" value="=">
-        <button class="math-operators">/</button>
+        <h2 class="render-answer-word">Answer: <span id="render-answer"></span></h2>
+
+        
+
+        <ul id="calculator-history">
+
+        </ul>
     </div>
-
-
-    <h2 id="render-answer"></h2>
-
-    <button id="clear-history">Clear History</button>
-
-    <ul id="calculator-history">
-
-    </ul>
 </body>
 </html>
