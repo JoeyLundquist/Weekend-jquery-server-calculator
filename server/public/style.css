@@ -71,3 +71,7 @@ body {
     border:1px white solid;
     border-radius: 5px;
 }
+
+.render-answer-word {
+    width: 600px;
+}
