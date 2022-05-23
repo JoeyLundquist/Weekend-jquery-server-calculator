@@ -8,7 +8,8 @@ const bodyParser = require('body-parser');
 const app = express();
 
 //Setting up port to run on
-const PORT = 5000;
+//process.env.PORT is the port heroku want you to liston on
+const PORT = process.env.PORT;
 
 //Setting up body-parser to read objects on server side
 app.use(bodyParser.urlencoded({extended:true}));
