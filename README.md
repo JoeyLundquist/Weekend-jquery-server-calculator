@@ -17,6 +17,9 @@ To see functionality follow the installation steps then visit localhost:5000/ind
 ![Calculator in Use](./images/Server-side-calculator-inuse.png)
 ---
 
+## Example
+https://sleepy-garden-18267.herokuapp.com/
+
 ## Prerequisites 
 
 -[Node.js](https://nodejs.org/en/)

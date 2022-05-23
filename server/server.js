@@ -9,7 +9,7 @@ const app = express();
 
 //Setting up port to run on
 //process.env.PORT is the port heroku want you to liston on
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 //Setting up body-parser to read objects on server side
 app.use(bodyParser.urlencoded({extended:true}));
