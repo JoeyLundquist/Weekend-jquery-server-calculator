@@ -93,7 +93,7 @@ function renderToDOM(calc) {
     el.empty();
     let dataCounter = 0;
     for(let input of calc){
-        el.prepend(`
+        el.append(`
                 <li data-counter="${dataCounter}" class="calc-history-li">
                     ${input.firstInputNumber} ${input.mathOperator} ${input.secondInputNumber}
                 </li>
