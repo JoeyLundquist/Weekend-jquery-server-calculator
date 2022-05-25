@@ -55,8 +55,8 @@ function onSubmit(evt) {
         data: data
     }).then((response) => {
         console.log('Inputs Posted', response)
-    }).catch(() => {
-        console.log(`Not posted, error`)
+    }).catch((err) => {
+        console.log(`Not posted, error ${err}`)
     });
     //once we have our object sent to the array on the server we run this function to get bring the complete object back.
     gatherInputs();
@@ -71,6 +71,8 @@ function gatherInputs() {
         console.log(`Did the GET`);
         renderToDOM(response)
 
+    }).catch((err) => {
+        console.log(`GET failed ${err}`)
     })
 }
 //Our function to empty our inputs and reset our math operator to a default value.
@@ -113,8 +115,8 @@ function clearHistory() {
         gatherInputs(response)
         $('#calculator-history').empty();
         $('#render-answer').empty();
-    }).catch(() => {
-        console.log('DELETE didn\'t work')
+    }).catch((err) => {
+        console.log('DELETE didn\'t work', err)
     })
 
 }
@@ -134,7 +136,7 @@ function calculateHistoryItem() {
         console.log(`In calc history`, response.mathAnswer )
         $('#render-answer').empty()
         $('#render-answer').append(`${response.mathAnswer}`)
-    }).catch(() => {
-        console.log(`You don messed up`)
+    }).catch((err) => {
+        console.log(`You don messed up`, err)
     })
 }
