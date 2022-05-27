@@ -38,16 +38,16 @@ const sum = require('./modules/sum');
 //By checking the math operators and plugging the inputs into the correct function
 function doingCalculations(calcs) {
      if(calcs.mathOperator === '/'){
-       calcs.mathAnswer = divide.divideNum(calcs.firstInputNumber, calcs.secondInputNumber);
+       calcs.mathAnswer = divide(calcs.firstInputNumber, calcs.secondInputNumber);
     }
     else if(calcs.mathOperator === '*'){
-        calcs.mathAnswer = multiplication.multiplication(calcs.firstInputNumber, calcs.secondInputNumber)
+        calcs.mathAnswer = multiplication(calcs.firstInputNumber, calcs.secondInputNumber)
     }
     else if(calcs.mathOperator === '+'){
-        calcs.mathAnswer = sum.sumOf(Number(calcs.firstInputNumber), Number(calcs.secondInputNumber))
+        calcs.mathAnswer = sum(Number(calcs.firstInputNumber), Number(calcs.secondInputNumber))
     }
     else if(calcs.mathOperator === '-'){
-        calcs.mathAnswer = subtract.subtract(Number(calcs.firstInputNumber), Number(calcs.secondInputNumber))
+        calcs.mathAnswer = subtract(Number(calcs.firstInputNumber), Number(calcs.secondInputNumber))
     }
     else{
         return false;

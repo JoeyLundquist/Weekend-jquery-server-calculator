@@ -55,11 +55,14 @@ function onSubmit(evt) {
         data: data
     }).then((response) => {
         console.log('Inputs Posted', response)
+        //once we have our object sent to the array on the server we run this 
+        //function to get bring the complete object back.
+        gatherInputs();
     }).catch((err) => {
         console.log(`Not posted, error ${err}`)
     });
-    //once we have our object sent to the array on the server we run this function to get bring the complete object back.
-    gatherInputs();
+    
+   
 }
 //Our function to GET our object back with our calculations being complete
 function gatherInputs() {
